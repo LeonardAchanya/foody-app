@@ -1,18 +1,22 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/database");
 
-class User extends Sequelize.Model {}
+class Receipe extends Sequelize.Model {}
 
-User.init({
-    username:{
+Receipe.init({
+    title:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    email:{
+    description:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    imageUrl:{
         type: Sequelize.STRING,
         allowNull: false
     }
 
-},{sequelize});
+}, {sequelize});
 
-module.exports = User;
+module.exports = Receipe;
