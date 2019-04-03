@@ -9,6 +9,8 @@ const cors = require("cors");
 const sequelize = require("./config/database");
 
 const likeRoutes = require("./routes/api/like");
+const userRoutes = require("./routes/api/user");
+const authRoute = require("./routes/api/auth");
 
 
 app = express();
@@ -23,6 +25,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/likes", likeRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoute);
 
 // Gets the PORT from the Node env and if it
 // does not exists there, set it to 5000
@@ -31,6 +35,7 @@ const PORT = process.env.PORT || 5000;
 
 // This activates the db connection and runs any
 // initial query required eg Model to db table creation
+// sequelize.sync({force:true})
 sequelize.sync()
     .then((result) => {
         // this creates a http server and listens for incoming requests
