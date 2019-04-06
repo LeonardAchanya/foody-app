@@ -5,7 +5,7 @@ const User = require("../models/users");
 
 exports.postAddUser = (req, res, next) => {
     const { firstname, lastname, email, username, password, confirmPassword, imageUrl } = req.body;
-    if (!firstname || !lastname || !email || !username || !password || !confirmPassword) {
+    if (!firstname || !lastname || !email || !username || !password) {
         res.status(400).json({ msg: "All Field are required" })
     } else {
         User.findOne({
@@ -18,9 +18,9 @@ exports.postAddUser = (req, res, next) => {
                     return res.status(400).json({ msg: "User exists" })
                 } else {
 
-                    if (password !== confirmPassword) {
-                        return res.status(400).json({ msg: "Password's don't match" })
-                    } else {
+                    // if (password !== confirmPassword) {
+                        // return res.status(400).json({ msg: "Password's don't match" })
+                    // } else {
                         let hashedPassword;
                         try {
                             const salt = bcrypt.genSaltSync(10);
@@ -50,7 +50,7 @@ exports.postAddUser = (req, res, next) => {
                                     })
                                 });
                         }).catch((err) => res.status(500).json({ msg: "error occured" }))
-                    }
+                    // }
 
                 }
             })
