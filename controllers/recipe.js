@@ -11,10 +11,10 @@ exports.getRecipe = (req, res, next) => {
 };
 
 exports.postRecipe = (req, res, next) => {
-    const { title, ingredient, description, UserId, CategoryId } = req.body;
+    const { title, ingredients, steps,images, UserId, CategoryId } = req.body;
 
     Recipe.create({
-        title, ingredient, description, UserId, CategoryId
+        title, ingredients, steps, images, UserId, CategoryId
     })
         .then(recipe => {
             res.json(recipe)

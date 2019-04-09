@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const recipeController = require("../controllers/recipe");
 
-router.get("/", recipeController.getRecipe);
-router.post("/", recipeController.postRecipe);
+router.get("/get", recipeController.getRecipe);
+router.post("/add", recipeController.postRecipe);
 router.delete("/:id", recipeController.deleteRecipe);
 router.get("/user", recipeController.getUser);
 router.post("/user", recipeController.postUser);

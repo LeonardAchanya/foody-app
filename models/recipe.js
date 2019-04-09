@@ -9,15 +9,18 @@ Recipe.init({
         type: Sequelize.STRING,
         allowNull: false 
     },
-    ingredient:{
+    ingredients:{
         type: Sequelize.STRING,
         allowNull: false 
     },
-    description:{
+    steps:{
         type: Sequelize.STRING,
         allowNull: false 
+    },
+    images:{
+        type: Sequelize.STRING,
+        allowNull: false
     }
-    
 }, {sequelize});
 
 User.hasMany(Recipe);
