@@ -1,8 +1,10 @@
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("recipes", "root",  process.env.MYSQL_PASSWORD, {
-    dialect: "mysql",
-    host: "localhost"
-})
+//Creates a Sequelize instance and sets the database config
+const sequelize = new Sequelize("foody","root", process.env.MYSQL_PASSWORD,{
+    host:"localhost",
+    dialect:"mysql"
+});
 
 module.exports = sequelize;
+

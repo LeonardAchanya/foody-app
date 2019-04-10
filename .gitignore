@@ -3,3 +3,9 @@ node_modules/
 
 # Ignore file named '.env'
 .env
+client/node_modules/
+
+# Ignore file named '.env'
+.env
+
+.DS_Store

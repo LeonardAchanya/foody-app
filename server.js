@@ -1,44 +1,45 @@
-require("dotenv").config(); 
+require("dotenv").config();  // allows our project read variables from .env files
+
 const express = require("express");
+
+// Enables Cross Origin Resource Sharing for our Project
 const cors = require("cors");
-// const bodyParser= require('body-parser')
-// const multer = require('multer');
+
+// Database ORM for NodeJS
 const sequelize = require("./config/database");
-const routeRecipes =require("./routes/recipe");
-// const upload = multer({ dest: 'uploads/' })
+
+const likeRoutes = require("./routes/api/like");
+const userRoutes = require("./routes/api/user");
+const authRoute = require("./routes/api/auth");
 
 
-const app = express();
-// app.use(bodyParser.urlencoded({extended: true}))
-// This allows domain to access api 
+app = express();
+
+// This middleware always runs for all request
+// and this present setting allows and domain to 
+// access resources (our api) from our site.
 app.use(cors());
 
-//configuring Multer to use files directory for storing files
-// const storage = multer.diskStorage({
-//   destination: './files',
-//   filename(req, file, cb) {
-//     cb(null, `${new Date()}-${file.originalname}`)
-//   },
-// });
-
-// const upload = multer({ storage });
-
-// // express route where we receive files from the client
-// app.post('/files', upload.single('file'), (req, res) => {
-//  const file = req.file; // file passed from client
-//  const meta = req.body; 
-
-// });
-
-// This allows us a cess the content of json request
+// This parses all json request so we can access
+// its contents via 'req.body' object
 app.use(express.json());
-app.use("/recipe", routeRecipes);
 
+app.use("/api/likes", likeRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoute);
+
+// Gets the PORT from the Node env and if it
+// does not exists there, set it to 5000
 const PORT = process.env.PORT || 5000;
 
+
+// This activates the db connection and runs any
+// initial query required eg Model to db table creation
+// sequelize.sync({force:true})
 sequelize.sync()
-    .then(result => {
+    .then((result) => {
         // this creates a http server and listens for incoming requests
-        app.listen(PORT, () => console.log("Started on Port " + PORT));
+        app.listen(PORT, () => console.log("Started on " + PORT));
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
+
