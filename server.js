@@ -3,7 +3,7 @@ require("dotenv").config();  // allows our project read variables from .env file
 const express = require("express");
 
 // Enables Cross Origin Resource Sharing for our Project
-const cors = require("cors");
+const cors = require("cors"); 
 
 // Database ORM for NodeJS
 const sequelize = require("./config/database");
@@ -11,6 +11,7 @@ const sequelize = require("./config/database");
 const likeRoutes = require("./routes/api/like");
 const userRoutes = require("./routes/api/user");
 const authRoute = require("./routes/api/auth");
+const recipeRoute = require("./routes/api/recipe")
 
 
 app = express();
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use("/api/likes", likeRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoute);
+app.use("/api/recipe", recipeRoute);
 
 // Gets the PORT from the Node env and if it
 // does not exists there, set it to 5000

@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from "react-router-dom";
+// import { connect } from "react-redux";
+// import { Container } from "reactstrap";
+// import { Editor } from '@tinymce/tinymce-react';
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
+
+import NavbarApp from "./component/NavbarApp/NavbarApp";
+import { Home, AddRecipe, Recipes } from "./pages/index";
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <NavbarApp />
+          <Switch>
+              <Route path="/recipe" component={Recipes} /> 
+              <Route path="/addRecipe" component={AddRecipe}/> 
+              <Route path="/" exact component={Home} />
+              <Route render={() => <h2>Not Found</h2>} />
+          </Switch>
+       
       </div>
     );
   }

@@ -1,5 +1,5 @@
 const Recipe = require("../models/recipe");
-const User = require("../models/user");
+const User = require("../models/users");
 const Category = require("../models/category")
 
 exports.getRecipe = (req, res, next) => {

@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/database");
-const User = require("../models/user");
+const User = require("../models/users");
 const Category = require("../models/category");
 
 class Recipe extends Sequelize.Model{}

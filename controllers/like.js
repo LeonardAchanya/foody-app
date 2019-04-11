@@ -1,6 +1,6 @@
 const Like = require("../models/like");
 const User = require("../models/users");
-const Receipe = require("../models/reciepe");
+const Recipe = require("../models/recipe");
 
 
 exports.getLikes = (req, res, next) => {
