@@ -1,12 +1,14 @@
 
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import {
 	Col,
-	Card,
 	Row,
-	CardBody,
-	CardTitle
+	Card,
+	CardTitle,
+	Container,
+	CardBody
+
 } from "reactstrap";
 
 import "./RecipeCards.css"
@@ -14,29 +16,33 @@ const RecipeCards = ({recipes}) => {
 	
 	// const divStyle = {display: "flex", width: "100%", background_color: "danger"}
 	return (
-		<div className="cardlist">
-        	
+		
+        	    <Container>
 					<Row>
 				        {recipes.map(recipe => (
-							<Col key={recipe.id} sm="3"  className="cards">
+							<Col key={recipe.id} sm="4"  className="cards">
 				            {/* <NavLink key={recipe.id} to={`/recipe/${recipe.id}`} className="nav-link"> */}
-								<div className="card-image">
-									<h2>{recipe.images}</h2>
+								<Card>
+									<CardTitle>
+										{recipe.title}
+										</CardTitle>
+										<div className="card-image">
+											{recipe.images}
 										</div>
-											<ul className="card-text">
-												<li>{recipe.title}</li>
-												<li>{recipe.steps}</li>
-											</ul>
-										<div className="card-footer">
+										<div className= "card-footer">
+											favorite
+										</div>
+									
+
 									{/* <small className="text-muted">
 										Last updated <Moment fromNow>{job.updatedAt}</Moment>
 									</small> */}
-								</div>
 						{/* </NavLink> */}
+						</Card>
 					</Col>
 						))}
 					</Row>
-				</div>
+					</Container>
 			
 			)};
 	

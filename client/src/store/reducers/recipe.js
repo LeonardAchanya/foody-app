@@ -23,6 +23,12 @@ const reducer = (state = initialState, action) => {
 				recipes: action.recipes,
 				isLoading: false
 				};
+		case types.GET_RECIPES_BY_ID_SUCCESS:
+		return {
+			...state,
+			recipes: action.recipes,
+			isLoading: false
+			};
 		
 		case types.ERROR_OCCURED:
 			return {

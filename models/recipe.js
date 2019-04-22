@@ -19,7 +19,7 @@ Recipe.init({
     },
     images:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     }
 }, {sequelize});
 

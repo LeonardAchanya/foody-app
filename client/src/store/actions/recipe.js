@@ -29,31 +29,61 @@ export const addRecipeSuccess = () => {
 export const addRecipeStart = () => {
 	return{
 	type: types.ADD_RECIPES_START
-    }};
+	}};
+	
+
     
-export const addRecipe = data => {
+export const addRecipe = recipedata => {
 	return (dispatch) => {
 		dispatch(loading());
+		
+		//Headers
+		const config = {
+			headers: {}
+			}
+
+		// const{title} = recipedata;
+		let formData = null;
+		// if (){
+			config.headers["Content-Type"] = "multipart/form-data";
+			formData = new FormData();
+			formData.append('title', recipedata.title);
+			formData.append('ingredients', recipedata.ingredients);
+			formData.append('steps', recipedata.steps);
+			formData.append('images', recipedata.images);
+			// }
+			console.log(recipedata)
+		
 		    axios
-		        .post("/add", data )
+		        .post("recipe/add", recipedata, formData, config )
 		            .then(res =>{
-			             return dispatch(addRecipeSuccess(res.data))
-		                     })
-		                        .then (() => {
-			                         dispatch(addRecipeStart());
-		                                })
-		                                    .catch(err => dispatch(errorOccured(err)))
-                                                }
-                                                }
+			              dispatch(addRecipeSuccess(res.data))
+							 })
+							 .then( ()=> {
+								dispatch(addRecipeStart())
+							})
+							.catch(err => dispatch(errorOccured(err)))
+								}
+							}
 
 
 export const getRecipe = () => {
     return (dispatch) => {
         dispatch(loading())
-            axios.get("/get")
+            axios.get("recipe/get")
                 .then(res => {
                      console.log(res.data)
-                         dispatch(getRecipeSuccess(res.data));
-                             }) 
-                             .catch(err => dispatch(errorOccured(err)));
-                             }};
+						 dispatch(getRecipeSuccess(res.data));
+							}) 
+							.catch(err => dispatch(errorOccured(err)));
+							}};
+
+export const getRecipeById = recipeId => {
+	return (dispatch) => {
+		dispatch(loading())
+			axios.get(`recipe/${recipeId}`)
+				.then(res => {
+					dispatch({type: types.GET_RECIPES_BY_ID_SUCCESS, recipe: res.data })
+					})
+					.catch(err => dispatch(errorOccured(err)))
+					}}
