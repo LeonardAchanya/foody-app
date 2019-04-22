@@ -1,0 +1,18 @@
+/* .cardlist{
+    display: flex;
+    width: 90%;
+    height: 800px;
+    flex-direction: row;
+}
+ 
+.cards{
+    width: 30%;
+    height: 200px;
+    background-color:hotpink;
+    margin-bottom:10px;
+    margin-left: 15px;
+} */
+.card-image{
+    height:100px;
+    background-color: red;
+}

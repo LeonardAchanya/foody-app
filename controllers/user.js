@@ -1,10 +1,11 @@
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/users");
+ const User = require("../models/users");
 
 exports.postAddUser = (req, res, next) => {
-    const { firstname, lastname, email, username, password, confirmPassword, imageUrl } = req.body;
+    const { firstname, lastname, email, username,           
+            password, confirmPassword, imageUrl } = req.body;
     if (!firstname || !lastname || !email || !username || !password) {
         res.status(400).json({ msg: "All Field are required" })
     } else {

@@ -6,13 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "dev": "concurrently \"nodemon server.js\" \"cd client/recipe && npm start\"",
-    "clientinstall": "cd client/recipe && npm install"
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\"",
+    "clientinstall": "cd client && npm install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tinymce/tinymce-react": "^3.0.1",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",

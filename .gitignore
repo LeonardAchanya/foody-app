@@ -9,3 +9,6 @@ client/node_modules/
 .env
 
 .DS_Store
+
+#Ignore all uploads
+uploads/
