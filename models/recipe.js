@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/database");
-const User = require("../models/users");
-const Category = require("../models/category");
+const User = require("./users");
+const Category = require("./category");
 
 class Recipe extends Sequelize.Model{}
 Recipe.init({
